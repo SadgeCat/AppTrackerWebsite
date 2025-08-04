@@ -1,0 +1,421 @@
+:root {
+    --bigtextcolor: #ffd7f8;
+    --white: #faf0e6;
+    --textcolor: #00e8dd;
+    --bgcolor: #3b3939;
+    --darkerbgcolor: #111111;
+    --darkestbgcolor: #0a0a0a;
+}
+
+.light-theme {
+  --bigtextcolor: #6a26ff;
+  --white: #0a0a0a;
+  --textcolor: #202020;
+  --bgcolor: #f0f0f0;
+  --darkerbgcolor: #eaeaea;
+  --darkestbgcolor: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: var(--bgcolor);
+    color: var(--white);
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 1rem;
+    background: linear-gradient(to right, #282727, #000000);
+    box-shadow: 0 0 10px rgba(0, 232, 221, 0.25);
+    border-bottom: 2px solid rgba(0, 232, 221, 0.3);
+    z-index: 100;
+}
+
+.navbar a {
+    text-decoration: none;
+}
+
+.navbar button {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    padding: 0.7rem 1.5rem;
+    background-color: var(--darkerbgcolor);
+    color: var(--textcolor);
+    border: 2px solid rgba(0, 232, 221, 0.5);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 6px rgba(0, 232, 221, 0.25);
+}
+
+.navbar button:hover {
+    background-color: var(--textcolor);
+    color: var(--bgcolor);
+    transform: scale(1.05);
+    box-shadow: 0 0 12px var(--textcolor);
+}
+
+/* dropdown */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    right: 0;
+    top: 120%;
+    background-color: var(--darkestbgcolor);
+    border: 2px solid rgba(0, 232, 221, 0.3);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 232, 221, 0.2);
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    z-index: 200;
+}
+
+.dropdown-menu button {
+    border: none;
+    padding: 0.5rem 1rem;
+    text-align: left;
+    transition: all 0.3s ease;
+}
+
+/* main content */
+main {
+    padding: 2rem;
+}
+
+.title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--bigtextcolor);
+    text-shadow: 0 0 10px #ff2cdfaa;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.card {
+    background-color: var(--darkestbgcolor);
+    border: 2px solid var(--white);
+    border-radius: 1rem;
+    padding: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: var(--white);
+}
+
+.card-expired {
+    background-color: var(--darkestbgcolor);
+    border: 2px solid red;
+    border-radius: 1rem;
+    padding: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: var(--white);
+}
+
+.card:hover {
+    transform: scale(1.03);
+    border-color: var(--textcolor);
+    box-shadow: 0 0 10px var(--textcolor);
+}
+
+.edit-card {
+    display: flex;
+    gap: 0.5rem;
+    text-align: right;
+    margin-top: 1rem;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+main button {
+    font-family: 'Orbitron', sans-serif;
+    background: none;
+    color: var(--textcolor);
+    border: 2px solid var(--textcolor);
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+main button:hover {
+    background: var(--textcolor);
+    color: var(--bgcolor);
+    box-shadow: 0 0 10px var(--textcolor);
+}
+
+/* addcard */
+.add-card {
+    background-color: var(--darkerbgcolor);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 2rem auto;
+    width: 90%;
+    max-width: 500px;
+    color: var(--white);
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 0 20px rgba(0, 232, 221, 0.3);
+    border: 1px solid var(--textcolor);
+}
+
+.add-card h2 {
+    text-align: center;
+    color: var(--bigtextcolor);
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    text-shadow: 0 0 5px #ff2cdfaa;
+}
+
+.add-card .input-group {
+    margin-bottom: 1.25rem;
+}
+
+.add-card label {
+    font-weight: bold;
+    color: #cccccc;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.add-card input {
+    width: 100%;
+    padding: 0.6rem 1rem;
+    border: 1px solid #333;
+    border-radius: 8px;
+    background-color: var(--darkestbgcolor);
+    color: var(--white);
+    font-size: 1rem;
+}
+
+.add-card input:focus {
+    outline: none;
+    border-color: var(--textcolor);
+    box-shadow: 0 0 8px var(--textcolor);
+}
+
+.react-datepicker-wrapper {
+    width: 100%;
+    padding: 0.6rem 1rem;
+    margin-top: 0.3rem;
+    border: 1px solid #333;
+    border-radius: 8px;
+    background-color: var(--darkestbgcolor);
+    color: var(--white);
+    font-size: 1rem;
+}
+
+.react-datepicker__input-container input:focus {
+    outline: none;
+    border-color: var(--textcolor);
+    box-shadow: 0 0 8px var(--textcolor);
+}
+
+#add-button {
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 0.8rem;
+    background-color: var(--textcolor);
+    color: var(--darkestbgcolor);
+    font-weight: bold;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#add-button:hover {
+    background-color: #00c6bc;
+    box-shadow: 0 0 12px var(--textcolor);
+}
+
+/* calendar */
+.calendar-container {
+    padding: 2rem;
+    background: var(--darkestbgcolor);
+    color: var(--white);
+}
+
+.fc-col-header {
+    color: rgb(19, 19, 19);
+}
+
+.fc .fc-toolbar-title {
+    color: var(--textcolor);
+    font-family: 'Orbitron', sans-serif;
+}
+
+.fc .fc-daygrid-event {
+    background-color: var(--textcolor);
+    color: #121212;
+    border: none;
+    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* AIPlanner Page */
+.ai-planner {
+    padding: 1rem;
+    background-color: var(--darkerbgcolor);
+    border-left: 4px solid #c0392b;
+    margin-top: 2rem;
+}
+
+.ai-suggestion-card {
+    background-color: var(--darkerbgcolor);
+    border: 2px solid var(--white);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+}
+
+.suggestion-box {
+    background-color: var(--darkerbgcolor);
+    padding: 1rem;
+    border-radius: 8px;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.6;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.suggestion-box ul {
+    padding-left: 2rem;
+}
+
+.suggestion-box li {
+    margin-bottom: 0.5rem;
+}
+
+
+/* Resources Page */
+.internship {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--darkerbgcolor);
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(0, 232, 221, 0.2);
+    border: 1px solid var(--textcolor);
+}
+
+.search-box {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.search-box input {
+    width: 100%;
+    max-width: 600px;
+    padding: 0.75rem 1.25rem;
+    border: 2px solid rgba(0, 232, 221, 0.5);
+    border-radius: 12px;
+    background-color: var(--darkestbgcolor);
+    color: var(--white);
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: var(--textcolor);
+    box-shadow: 0 0 10px var(--textcolor);
+}
+
+.internship-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.internship-list p {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--textcolor);
+    font-style: italic;
+}
+
+.internship-card {
+    background-color: var(--darkestbgcolor);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 1.25rem 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: var(--white);
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.internship-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 15px var(--textcolor);
+    border-color: var(--textcolor);
+}
+
+.internship-card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.internship-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.4;
+    transition: color 0.2s ease;
+}
+
+.internship-card:hover h3 {
+    color: var(--textcolor);
+}
+
+.internship-logo img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    border-radius: 0.5rem;
+}
+
+.internship-content h3 {
+    font-size: 1.1rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+.internship-content p {
+    margin: 0.2rem 0;
+    font-size: 0.875rem;
+    color: #4b5563;
+}
+
+.internship-content .org {
+    font-weight: 500;
+    color: #1f2937;
+}
+
+.internship-content .location, .internship-content .type, .internship-content .date {
+    font-size: 0.8rem;
+    color: #6b7280;
+}

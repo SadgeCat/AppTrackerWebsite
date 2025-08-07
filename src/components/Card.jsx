@@ -35,7 +35,7 @@ const Card = ({card, cardID, toggleEdit, deleteCard}) => {
     }, [card.deadline])
     
     return (
-        <div className={`${timeLeft.days === 0 && timeLeft.hours === 0 && timeLeft.minutes === 0 && timeLeft.seconds === 0 ? "card-expired" : "card"}`}>
+        <div className={`${timeLeft.days === 0 && timeLeft.hours === 0 && timeLeft.minutes === 0 && timeLeft.seconds === 0 ? `card-expired-${card.type}` : `card-${card.type}`}`}>
             <div className="card-header">
                 <h3>{card.title}</h3>
             </div>
@@ -44,6 +44,7 @@ const Card = ({card, cardID, toggleEdit, deleteCard}) => {
                 <p><strong>Deadline: </strong>{card.deadline.toLocaleDateString()}</p>
                 <p><strong>Time Remaining: </strong>{`${timeLeft.days} days, ${timeLeft.hours} hours, ${timeLeft.minutes} minutes, ${timeLeft.seconds} seconds.`}</p>
                 <p><strong>Status: </strong>{card.status}</p>
+                <p><strong>Type: </strong>{card.type}</p>
             </div>
             <div className="edit-card">
                 <button onClick={toggleEdit}>Edit</button>

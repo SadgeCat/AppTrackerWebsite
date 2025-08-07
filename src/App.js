@@ -24,22 +24,23 @@ const App = () => {
         localStorage.setItem("cardList", JSON.stringify(cardList));
     }, [cardList]);
 
-    const addCard = (id, title, desc, deadline, status) => {
+    const addCard = (id, title, desc, deadline, status, type) => {
         const newCard = {
             id: Date.now(),
             title: title,
             desc: desc,
             deadline: deadline,
-            status: status
+            status: status,
+            type: type
         };
         setCardList(prev => [...prev, newCard]);
     };
 
-    const editCard = (id, title, desc, deadline, status) => {
+    const editCard = (id, title, desc, deadline, status, type) => {
         setCardList(prev =>
             prev.map(card =>
                 card.id === id
-                    ? { ...card, title, desc, deadline, status }
+                    ? { ...card, title, desc, deadline, status, type }
                     : card
             )
         );

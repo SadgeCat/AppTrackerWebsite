@@ -6,6 +6,8 @@ const MainContent = (props) => {
     const [isOnAddCard, setIsOnAddCard] = useState(false);
     const [isOnEditCard, setIsOnEditCard] = useState(false);
     const [cardID, setCardID] = useState(null);
+    const [search, setSearch] = useState("");
+    const [cardList, setCardList] = useState(props.cardList);
 
     const toggleIsOnAddCard = () => {
         setIsOnAddCard(!isOnAddCard);
@@ -17,12 +19,35 @@ const MainContent = (props) => {
         setCardID(newID);
     }
 
+    const HandleSearch = e => {
+        e.preventDefault();
+        console.log(search);
+        FetchCard(search);
+    }
+    const FetchCard = async (query) => {
+        const filteredCards = cardList.filter((card) =>
+            card.title.toLowerCase().includes(query.toLowerCase())
+        );
+        console.log(filteredCards);
+        setCardList(filteredCards);
+        if(query === "") setCardList(props.cardList);
+    }
+
     return (
         <>
         <main>
             <h1 className="title">Application Dashboard</h1>
+            <form
+                className="search-box"
+                onSubmit={HandleSearch}>
+                <input
+                    type="search"
+                    placeholder="search card"
+                    value={search}
+                    onChange={e => setSearch(e.target.value)}/>
+            </form>
             <div className="cards-container">
-                {props.cardList.map((card) => {
+                {cardList.map((card) => {
                     return (
                         <Card 
                             card={card}

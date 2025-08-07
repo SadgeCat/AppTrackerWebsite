@@ -21,12 +21,14 @@ const AddCard = ({dosmthtocard, mode, cardID, card}) => {
     const [title, setTitle] = useState(card?.title || "");
     const [desc, setDesc] = useState(card?.desc || "");
     const [status, setStatus] = useState(card?.status || "");
+    const [type, setType] = useState(card?.type || "");
 
     const swtch = mode === "add" ? true : false;
     const h2Text = swtch ? "Add New Application" : "Edit Application";
     const titleText = swtch ? "Title:" : "Edit Title:";
     const descText = swtch ? "Description:" : "Edit Description";
     const statusText = swtch ? "Status:" : "Edit Status:";
+    const typeText = swtch ? "Type:" : "Edit Type:";
     const btnText = swtch ? "Add" : "Edit";
 
     return (
@@ -55,11 +57,29 @@ const AddCard = ({dosmthtocard, mode, cardID, card}) => {
 
             <div className="input-group">
                 <label>{statusText}
-                    <input type="text" value={status} onChange={(e) => setStatus(e.target.value)}/>
+                    <select value={status} onChange={(e) => setStatus(e.target.value)}>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Not Started">Not Started</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Deferred">Deferred</option>
+                    </select>
                 </label>
             </div>
 
-            <button id="add-button" onClick={() => dosmthtocard(cardID, title, desc, selectedDate, status)}>{btnText}</button>
+            <div className="input-group">
+                <label>{typeText}
+                    <select value={type} onChange={(e) => setType(e.target.value)}>
+                        <option value="School">School</option>
+                        <option value="Work">Work</option>
+                        <option value="Family">Family</option>
+                        <option value="Meeting">Meeting</option>
+                        <option value="Trip">Trip</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </label>
+            </div>
+
+            <button id="add-button" onClick={() => dosmthtocard(cardID, title, desc, selectedDate, status, type)}>{btnText}</button>
         </div>
     );
 };

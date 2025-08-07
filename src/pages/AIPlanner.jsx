@@ -34,7 +34,6 @@ const AIPlanner = ({ cardList }) => {
             {cardList.map((card) => (
                 <div key={card.title} className="ai-suggestion-card">
                     <h4>{card.title}</h4>
-                    <p><strong>Suggestion:</strong></p>
                     <div className="suggestion-box">
                         <ReactMarkdown>{suggestions[card.id] || "Generating..."}</ReactMarkdown>
                     </div>

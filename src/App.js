@@ -22,7 +22,19 @@ const App = () => {
 
     useEffect(() => {
         localStorage.setItem("cardList", JSON.stringify(cardList));
+        setFilteredCardList(cardList);
     }, [cardList]);
+
+    const [filteredCardList, setFilteredCardList] = useState(cardList);
+    const [filterType, setFilterType] = useState("");
+    const [filterStatus, setFilterStatus] = useState("");
+    const [search, setSearch] = useState("");
+    useEffect(() => {
+        const filtered = cardList.filter((card) =>
+            (filterType === "" || card.type === filterType) && (filterStatus === "" || card.status === filterStatus) && card.title.toLowerCase().includes(search.toLowerCase())
+        );
+        setFilteredCardList(filtered);
+    }, [search, filterType, filterStatus, cardList]);
 
     const addCard = (id, title, desc, deadline, status, type) => {
         const newCard = {
@@ -56,7 +68,17 @@ const App = () => {
             <Router>
                 <Routes>
                     <Route element={<Layout/>}>
-                        <Route path="/" element={<Dashboard cardList={cardList} onAddCard={addCard} onEditCard={editCard} onDeleteCard={deleteCard}/>}/>
+                        <Route path="/" element={<Dashboard 
+                                                    cardList={filteredCardList}
+                                                    filterType={filterType}
+                                                    setFilterType={setFilterType}
+                                                    filterStatus={filterStatus}
+                                                    setFilterStatus={setFilterStatus}
+                                                    search={search}
+                                                    setSearch={setSearch}
+                                                    onAddCard={addCard}
+                                                    onEditCard={editCard}
+                                                    onDeleteCard={deleteCard}/>}/>
                         <Route path="/Calendar" element={<Calendar cardList={cardList}/>}/>
                         <Route path="/AIPlanner" element={<AIPlanner cardList={cardList}/>}/>
                         <Route path="/Resources" element={<Resources/>}/>

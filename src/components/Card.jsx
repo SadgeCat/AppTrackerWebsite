@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const Card = ({card, cardID, toggleEdit, deleteCard}) => {
+const Card = ({card, cardID, toggleEdit, deleteCard, filtercard, filtertype}) => {
 
     const getTimeRemaining = (dline) => {
         const now = new Date();

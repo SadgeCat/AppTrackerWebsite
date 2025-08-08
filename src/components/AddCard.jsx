@@ -16,12 +16,12 @@ const PickDateComponent = ({ selectedDate, setSelectedDate }) => {
     );
 };
 
-const AddCard = ({dosmthtocard, mode, cardID, card}) => {
+const AddCard = ({dosmthtocard, filtercard, filtertype, mode, cardID, card}) => {
     const [selectedDate, setSelectedDate] = useState(card?.deadline || new Date());
     const [title, setTitle] = useState(card?.title || "");
     const [desc, setDesc] = useState(card?.desc || "");
-    const [status, setStatus] = useState(card?.status || "");
-    const [type, setType] = useState(card?.type || "");
+    const [status, setStatus] = useState(card?.status || "In Progress");
+    const [type, setType] = useState(card?.type || "School");
 
     const swtch = mode === "add" ? true : false;
     const h2Text = swtch ? "Add New Application" : "Edit Application";

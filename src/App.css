@@ -3,6 +3,7 @@
     --white: #faf0e6;
     --textcolor: #00e8dd;
     --bgcolor: #3b3939;
+    --darkbgcolor: #353434;
     --darkerbgcolor: #111111;
     --darkestbgcolor: #0a0a0a;
     --schoolcolor: #28353f;
@@ -18,6 +19,7 @@
     --white: #0a0a0a;
     --textcolor: #202020;
     --bgcolor: #f0f0f0;
+    --darkbgcolor: #e2dddd;
     --darkerbgcolor: #eaeaea;
     --darkestbgcolor: #ffffff;
     --schoolcolor: #A5D8FF;
@@ -132,6 +134,58 @@ main {
     text-shadow: 0 0 10px #ff2cdfaa;
 }
 
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.right-div {
+    display: flex;
+    flex-direction: column;
+    flex: 3;
+    min-width: 300px;
+    gap: 1rem;
+}
+
+.filter-sidebar {
+    width: 160px;
+    padding: 1rem;
+    background-color: var(--darkbgcolor);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+.filter-section {
+    margin-bottom: 1.5rem;
+}
+
+.filter-section h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--textcolor);
+}
+
+.filter-section select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    background-color: #f9f9f9;
+    transition: border-color 0.2s;
+}
+
+.filter-section select:hover, .filter-section select:focus {
+    border-color: #007185;
+    outline: none;
+}
+
+
 .cards-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -140,7 +194,7 @@ main {
 
 .card-School, .card-Work, .card-Family, .card-Meeting, .card-Trip, .card-Other, .card-expired-School, .card-expired-Work, .card-expired-Family, .card-expired-Meeting, .card-expired-Trip, .card-expired-Other {
     background-color: var(--darkestbgcolor);
-    border: none;
+    border-left: 4px solid rgb(0, 0, 0);
     border-radius: 1rem;
     padding: 1.5rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);

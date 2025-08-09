@@ -28,13 +28,34 @@ const App = () => {
     const [filteredCardList, setFilteredCardList] = useState(cardList);
     const [filterType, setFilterType] = useState("");
     const [filterStatus, setFilterStatus] = useState("");
+    const [filterDate, setFilterDate] = useState("");
     const [search, setSearch] = useState("");
     useEffect(() => {
-        const filtered = cardList.filter((card) =>
-            (filterType === "" || card.type === filterType) && (filterStatus === "" || card.status === filterStatus) && card.title.toLowerCase().includes(search.toLowerCase())
-        );
+        const filtered = cardList.filter((card) => {
+            const deadline = new Date(card.deadline);
+            const diffMs = deadline - new Date();
+            const diffDays = diffMs / (1000 * 60 * 60 * 24);
+
+            let matchesDateFilter = true;
+            if(filterDate === "1day"){
+                matchesDateFilter = diffDays <= 1;
+            } else if(filterDate === "1week"){
+                matchesDateFilter = diffDays <= 7;
+            } else if(filterDate === "1month"){
+                matchesDateFilter = diffDays <= 30;
+            } else if(filterDate === "1year"){
+                matchesDateFilter = diffDays <= 365;
+            }
+
+            return (
+                (filterType === "" || card.type === filterType) &&
+                (filterStatus === "" || card.status === filterStatus) &&
+                card.title.toLowerCase().includes(search.toLowerCase()) &&
+                matchesDateFilter
+            );
+        });
         setFilteredCardList(filtered);
-    }, [search, filterType, filterStatus, cardList]);
+    }, [search, filterType, filterStatus, filterDate, cardList]);
 
     const addCard = (id, title, desc, deadline, status, type) => {
         const newCard = {
@@ -74,13 +95,15 @@ const App = () => {
                                                     setFilterType={setFilterType}
                                                     filterStatus={filterStatus}
                                                     setFilterStatus={setFilterStatus}
+                                                    filterDate={filterDate}
+                                                    setFilterDate={setFilterDate}
                                                     search={search}
                                                     setSearch={setSearch}
                                                     onAddCard={addCard}
                                                     onEditCard={editCard}
                                                     onDeleteCard={deleteCard}/>}/>
-                        <Route path="/Calendar" element={<Calendar cardList={cardList}/>}/>
-                        <Route path="/AIPlanner" element={<AIPlanner cardList={cardList}/>}/>
+                        <Route path="/Calendar" element={<Calendar cardList={filteredCardList}/>}/>
+                        <Route path="/AIPlanner" element={<AIPlanner cardList={filteredCardList}/>}/>
                         <Route path="/Resources" element={<Resources/>}/>
                         <Route path="/Settings" element={<Settings/>}/>
                     </Route>

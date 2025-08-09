@@ -374,6 +374,43 @@ main button:hover {
     border: none;
     font-weight: bold;
     font-family: 'Orbitron', sans-serif;
+    cursor: pointer;
+}
+.fc .fc-daygrid-event .fc-event-title {
+    color: var(--textcolor) !important;
+    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
+}
+.calendar-School {background-color: var(--schoolcolor) !important;}
+.calendar-Work {background-color: var(--workcolor) !important;}
+.calendar-Family {background-color: var(--familycolor) !important;}
+.calendar-Meeting {background-color: var(--meetingcolor) !important;}
+.calendar-Trip {background-color: var(--tripcolor) !important;}
+.calendar-Other {background-color: var(--othercolor) !important;}
+
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.modal {
+    background: var(--bgcolor);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+.modal h3 {
+    padding-bottom: 0.25rem;
+}
+.modal p {
+    padding-bottom: 0.25rem;
 }
 
 /* AIPlanner Page */

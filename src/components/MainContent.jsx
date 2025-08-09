@@ -46,6 +46,17 @@ const MainContent = (props) => {
                         <option value="Deferred">Deferred</option>
                         </select>
                     </div>
+
+                    <div className="filter-section">
+                        <h4>Deadline</h4>
+                        <select value={props.filterDate} onChange={(e) => props.setFilterDate(e.target.value)}>
+                        <option value="">All</option>
+                        <option value="1day">&lt; 1 Day</option>
+                        <option value="1week">&lt; 1 Week</option>
+                        <option value="1month">&lt; 1 Month</option>
+                        <option value="1year">&lt; 1 Year</option>
+                        </select>
+                    </div>
                 </div>
                 <div className="right-div">
                     <form

@@ -1,6 +1,6 @@
 import MainContent from "../components/MainContent"
 
-const Dashboard = ({cardList, filterType, setFilterType, filterStatus, setFilterStatus, search, setSearch, onAddCard, onEditCard, onDeleteCard}) => {
+const Dashboard = ({cardList, filterType, setFilterType, filterStatus, setFilterStatus, filterDate, setFilterDate, search, setSearch, onAddCard, onEditCard, onDeleteCard}) => {
     return (
         <div className="App">
             <MainContent 
@@ -9,6 +9,8 @@ const Dashboard = ({cardList, filterType, setFilterType, filterStatus, setFilter
                 setFilterType={setFilterType}
                 filterStatus={filterStatus}
                 setFilterStatus={setFilterStatus}
+                filterDate={filterDate}
+                setFilterDate={setFilterDate}
                 search={search}
                 setSearch={setSearch}
                 onAddCard={onAddCard}

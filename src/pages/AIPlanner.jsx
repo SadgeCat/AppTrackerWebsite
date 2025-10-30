@@ -38,14 +38,8 @@ const AIPlanner = ({ cardList }) => {
                 body: JSON.stringify({ cardList }),
             });
             const data = await res.json();
-
-            const systemMsg = {
-                role: "system",
-                content: `You are a productivity assistant. Here is the user's task list:\n\n${cardList.map(c => 
-                    `${c.title} (Description: ${c.desc}, Status: ${c.status}, Deadline: ${c.deadline})`).join("\n")}`
-            };
             const assistantMsg = { role: "assistant", content: data.suggestion };
-            setConversation([systemMsg, assistantMsg]);
+            setConversation([assistantMsg]);
         };
 
         if(cardList.length > 0) getInitialPlan();

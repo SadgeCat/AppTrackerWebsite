@@ -21,7 +21,7 @@ app.post("/api/groq", async (req, res) => {
 
     try{
         const result = await groq.chat.completions.create({
-            model: "llama3-8b-8192",
+            model: "llama-3.3-70b-versatile",
             messages: [
                 {
                     role: "system",
@@ -53,7 +53,7 @@ app.post("/api/groq-initial", async (req, res) => {
 
     try{
         const result = await groq.chat.completions.create({
-        model: "llama3-8b-8192",
+        model: "llama-3.3-70b-versatile",
         messages: [
             {
                 role: "system",
@@ -80,7 +80,7 @@ app.post("/api/groq-chat", async (req, res) => {
 
     try{
         const result = await groq.chat.completions.create({
-            model: "llama3-8b-8192",
+            model: "llama-3.3-70b-versatile",
             messages
         });
 
